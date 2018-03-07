@@ -1,5 +1,6 @@
 package cn.zerry.controller;
 
+import cn.zerry.bean.User;
 import cn.zerry.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,4 +22,13 @@ public class FeignController {
         return helloService.hello();
     }
 
+    @RequestMapping(value = "/feign-consumer2", method = RequestMethod.GET)
+    public String helloConsumer2(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(helloService.hello()).append("\n");
+        sb.append(helloService.hello("LZR")).append("\n");
+        sb.append(helloService.hello("LZR", 30)).append("\n");
+        sb.append(helloService.hello(new User("LZR", 30))).append("\n");
+        return sb.toString();
+    }
 }
