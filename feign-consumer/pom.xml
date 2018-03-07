@@ -34,6 +34,13 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>cn.zerry</groupId>
+            <artifactId>hello-service-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
     </dependencies>
 
     <dependencyManagement>

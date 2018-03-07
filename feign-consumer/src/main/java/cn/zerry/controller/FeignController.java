@@ -2,6 +2,7 @@ package cn.zerry.controller;
 
 import cn.zerry.bean.User;
 import cn.zerry.service.HelloService;
+import cn.zerry.service.RefactorHelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,21 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class FeignController {
+
     @Autowired
-    HelloService helloService;
+    RefactorHelloService refactorHelloService;
 
-    @RequestMapping(value = "/feign-consumer", method = RequestMethod.GET)
-    public String helloConsumer(){
-        return helloService.hello();
-    }
-
-    @RequestMapping(value = "/feign-consumer2", method = RequestMethod.GET)
-    public String helloConsumer2(){
+    @RequestMapping(value = "/feign-consumer3", method = RequestMethod.GET)
+    public String helloConsumer3(){
         StringBuilder sb = new StringBuilder();
-        sb.append(helloService.hello()).append("\n");
-        sb.append(helloService.hello("LZR")).append("\n");
-        sb.append(helloService.hello("LZR", 30)).append("\n");
-        sb.append(helloService.hello(new User("LZR", 30))).append("\n");
+        sb.append(refactorHelloService.hello("LZR")).append("\n");
+        sb.append(refactorHelloService.hello("LZR", 30)).append("\n");
+        sb.append(refactorHelloService.hello(new cn.zerry.dto.User("LZR", 30))).append("\n");
         return sb.toString();
     }
+
 }
